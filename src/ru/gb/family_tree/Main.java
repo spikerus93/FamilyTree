@@ -12,6 +12,7 @@ public class Main {
         System.out.println(tree);
     }
     static FamilyTree testFree(){
+        // Создание генеологического древа.
         FamilyTree tree = new FamilyTree();
 
         Human aleksey = new Human("Алексей", Gender.Male, LocalDate.of(1986, 12, 15));
