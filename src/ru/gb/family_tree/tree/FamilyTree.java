@@ -2,10 +2,11 @@ package ru.gb.family_tree.tree;
 
 import ru.gb.family_tree.human.Human;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements Serializable {
     private long memberId;
     private List<Human> humanList;
     public FamilyTree(){

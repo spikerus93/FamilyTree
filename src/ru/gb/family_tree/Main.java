@@ -1,26 +1,22 @@
 package ru.gb.family_tree;
 
+import ru.gb.family_tree.SaveRestoreData.FileHandler;
 import ru.gb.family_tree.human.Gender;
 import ru.gb.family_tree.human.Human;
 import ru.gb.family_tree.tree.FamilyTree;
 
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        FamilyTree tree = null;
-        try {
-            tree = testFree();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    public static void main(String[] args) {
+        FamilyTree tree = testFree();
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.write(tree, "FamilyTree.txt");
         System.out.println(tree);
     }
-    static FamilyTree testFree() throws IOException, ClassNotFoundException {
+
+    static FamilyTree testFree() {
         FamilyTree tree = new FamilyTree();
 
         Human aleksey = new Human("Алексей", Gender.Male, LocalDate.of(1986, 12, 15));
@@ -30,9 +26,9 @@ public class Main {
         tree.setWedding(aleksey, alisa);
 
         Human petr = new Human("Пётр", Gender.Male, LocalDate.of(2016, 7, 2)
-                ,aleksey, alisa);
+                , aleksey, alisa);
         Human vasilisa = new Human("Василиса", Gender.Female, LocalDate.of(2018, 3, 14)
-                ,aleksey, alisa);
+                , aleksey, alisa);
         tree.add(petr);
         tree.add(vasilisa);
 
