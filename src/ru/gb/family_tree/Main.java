@@ -4,14 +4,23 @@ import ru.gb.family_tree.human.Gender;
 import ru.gb.family_tree.human.Human;
 import ru.gb.family_tree.tree.FamilyTree;
 
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
-        FamilyTree tree = testFree();
+    public static void main(String[] args) throws IOException {
+        FamilyTree tree = null;
+        try {
+            tree = testFree();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(tree);
     }
-    static FamilyTree testFree(){
+    static FamilyTree testFree() throws IOException, ClassNotFoundException {
         FamilyTree tree = new FamilyTree();
 
         Human aleksey = new Human("Алексей", Gender.Male, LocalDate.of(1986, 12, 15));
@@ -37,5 +46,6 @@ public class Main {
 //        tree.remove(2);
 
         return tree;
+
     }
 }
