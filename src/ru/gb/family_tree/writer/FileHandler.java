@@ -1,9 +1,8 @@
-package ru.gb.family_tree.SaveRestoreData;
+package ru.gb.family_tree.writer;
 
 import ru.gb.family_tree.tree.FamilyTree;
 
 import java.io.*;
-import java.rmi.RemoteException;
 
 public class FileHandler implements Writer{
     private String filePath;

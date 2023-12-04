@@ -24,7 +24,7 @@ public class StudyGroup implements Iterable<Student> {
         studentList.sort(new StudentComparatorByName());
     }
 
-    public void sortByAge(){
+    public void sortByBirthDate(){
         Collections.sort(studentList, new StudentComparatorByAge());
 //        studentList.sort(new StudentComparatorByAge()); Можно использовать такую запись.
     }
