@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         FamilyTree tree = testFree();
-        FileHandler fileHandler = new FileHandler();
+        FileHandler fileHandler = new FileHandler(); //Написание метода записи и восстановления данных.
         fileHandler.write(tree, "FamilyTree.txt");
         System.out.println(tree);
     }
