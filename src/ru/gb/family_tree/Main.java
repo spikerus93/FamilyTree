@@ -5,15 +5,16 @@ import ru.gb.family_tree.human.Gender;
 import ru.gb.family_tree.human.Human;
 import ru.gb.family_tree.tree.FamilyTree;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
         FamilyTree tree = testFree();
-        FileHandler fileHandler = new FileHandler();
-        fileHandler.write(tree, "FamilyTree.txt");
         System.out.println(tree);
+
+        //write(tree);
     }
 
     static FamilyTree testFree() {
@@ -44,4 +45,16 @@ public class Main {
         return tree;
 
     }
+
+    private static void write(FamilyTree tree){
+        String filePath = "src/ru/gb/family_tree/SaveRestoreData/FamilyTree.txt";
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.write(tree, filePath);
+    }
+    private static FamilyTree restore(){
+        String filePath = "src/ru/gb/family_tree/SaveRestoreData/FamilyTree.txt";
+        FileHandler fileHandler = new FileHandler();
+        return (FamilyTree) fileHandler.restore(filePath);
+    }
 }
+

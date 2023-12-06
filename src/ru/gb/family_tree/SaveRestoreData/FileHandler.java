@@ -3,7 +3,6 @@ package ru.gb.family_tree.SaveRestoreData;
 import ru.gb.family_tree.tree.FamilyTree;
 
 import java.io.*;
-import java.rmi.RemoteException;
 
 public class FileHandler implements Writer{
     private String filePath;
@@ -29,7 +28,7 @@ public class FileHandler implements Writer{
     }
 
     @Override
-    public Object restore(String filePath) throws IOException {
+    public Object restore(String filePath){
         File file = new File(filePath);
         ObjectInputStream ois = null;
         try (FileInputStream fis = new FileInputStream(file)){
@@ -45,6 +44,6 @@ public class FileHandler implements Writer{
         } catch (ClassNotFoundException e){
             throw new RuntimeException(e);
         }
-        throw new InvalidObjectException("Что-то пошло не так!...");
+        return null;
     }
 }

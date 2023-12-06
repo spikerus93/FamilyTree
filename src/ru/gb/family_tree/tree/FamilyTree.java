@@ -2,11 +2,12 @@ package ru.gb.family_tree.tree;
 
 import ru.gb.family_tree.human.Human;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable{
     private long memberId;
     private List<Human> humanList;
     public FamilyTree(){
@@ -41,7 +42,7 @@ public class FamilyTree implements Serializable {
         }
     }
 
-// TODO РќР°РїРёСЃР°С‚СЊ РјРµС‚РѕРґ СЃРѕР·РґР°РЅРёСЏ СЂРѕРґСЃС‚РІРµРЅРЅРѕР№ СЃРІСЏР·Рё
+// TODO Написать метод создания родственной связи
     public boolean setWedding(Human human1, Human human2){
         if (human1.getSpouse() == null && human2.getSpouse() == null){
             human1.setSpouse(human2);
@@ -115,9 +116,9 @@ public class FamilyTree implements Serializable {
 
     public String getInfo(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Р’ РґРµСЂРµРІРµ ");
+        sb.append("В дереве ");
         sb.append(humanList.size());
-        sb.append(" РѕР±СЉРµРєС‚РѕРІ \n");
+        sb.append(" объектов \n");
         for (Human human: humanList){
             sb.append(human);
             sb.append("\n");
