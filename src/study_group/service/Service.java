@@ -32,7 +32,5 @@ public class Service {
         group.sortByName();
     }
 
-    public void sortByAge(){
-        group.sortByAge();
-    }
+    public void sortByAge(){ group.sortByAge(); }
 }
