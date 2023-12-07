@@ -17,4 +17,16 @@ public class Service {
     public void sortByBirthDate() {
         tree.sortByBirthDate();
     }
+
+    public String getInfo() {
+        return tree.getInfo();
+    }
+
+    public boolean addHuman(Human human) {
+        return tree.add(human);
+    }
+
+    public boolean setWedding(Human human1 , Human human2 ) {
+        return tree.setWedding(human1, human2);
+    }
 }
