@@ -1,5 +1,6 @@
 package ru.gb.family_tree;
 
+import ru.gb.family_tree.service.Service;
 import ru.gb.family_tree.writer.FileHandler;
 import ru.gb.family_tree.human.Gender;
 import ru.gb.family_tree.human.Human;
@@ -9,9 +10,12 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+        Service service = new Service();
         FamilyTree tree = testFree();
         FileHandler fileHandler = new FileHandler();
         fileHandler.write(tree, "FamilyTree.txt");
+        System.out.println(tree);
+        service.sortByBirthDate();
         System.out.println(tree);
     }
 

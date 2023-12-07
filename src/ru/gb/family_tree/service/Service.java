@@ -9,4 +9,12 @@ public class Service {
     public Service(){
         tree = new FamilyTree();
     }
+
+    public void sortByName() {
+        tree.sortByName();
+    }
+
+    public void sortByBirthDate() {
+        tree.sortByBirthDate();
+    }
 }
