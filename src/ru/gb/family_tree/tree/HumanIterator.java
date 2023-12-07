@@ -13,6 +13,11 @@ public class HumanIterator extends FamilyTree implements Iterator<Human>{
         super(humanList);
     }
 
+//    @Override
+//    public String getInfo() {
+//        return super.getInfo();
+//    }
+
 
     @Override
     public boolean hasNext() {

@@ -10,7 +10,7 @@ public class Human implements Serializable {
     private long id;
     private String name;
     private Gender gender;
-    private LocalDate birthDate;
+    public LocalDate birthDate;
     private LocalDate deathDate;
     private Human mother;
     private Human father;
