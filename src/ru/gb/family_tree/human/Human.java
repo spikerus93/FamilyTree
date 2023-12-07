@@ -1,12 +1,14 @@
 package ru.gb.family_tree.human;
 
+import ru.gb.family_tree.tree.TreeNode;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements TreeNode<Human> {
     private long id;
     private String name;
     private Gender gender;
@@ -35,12 +37,23 @@ public class Human implements Serializable {
                   Human father, Human mother) {
         this(name, gender, birthDate, null, father, mother);
     }
+
+    public Human(){};
     public boolean addChild (Human child) {
         if (!children.contains((child))) {
             children.add(child);
             return true;
         }
         return false;
+    }
+
+    public boolean addParent(Human parent){
+        if (parent.getGender().equals(Gender.Male)){
+            setFather(parent);
+        } else if (parent.getGender().equals(Gender.Female)){
+            setMother(parent);
+        }
+        return true;
     }
     public void setGender(Gender gender) {
         this.gender = gender;
@@ -49,13 +62,7 @@ public class Human implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public void setParent (Human parent) {
-        if (parent.gender.equals(Gender.Female)) {
-            setMother(parent);
-        } else if (parent.gender.equals(Gender.Male)) {
-            setFather(parent);
-        }
-    }
+
     public void setMother(Human mother) {
         this.mother = mother;
     }
@@ -132,11 +139,11 @@ public class Human implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("id: ");
         sb.append(id);
-        sb.append("  РРјСЏ: ");
+        sb.append("  Имя: ");
         sb.append(name);
-        sb.append("  РџРѕР»: ");
+        sb.append("  Пол: ");
         sb.append(gender);
-        sb.append("  Р’РѕР·СЂР°СЃС‚: ");
+        sb.append("  Возраст: ");
         sb.append(getAge());
         sb.append(", ");
         sb.append(getSpouseInfo());
@@ -146,41 +153,41 @@ public class Human implements Serializable {
         sb.append(getFatherInfo());
         sb.append(", ");
         sb.append(getChildrenInfo());
-//        TODO РґРѕР±Р°РІРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Р¶РёРІ Р»Рё С‡РµР»РѕРІРµРє
+//        TODO добавить информацию жив ли человек
         return sb.toString();
     }
     public String getSpouseInfo() {
-        String res = "РЎСѓРїСЂСѓРі(Р°): ";
+        String res = "Супруг(а): ";
         if (spouse == null){
-            res += "РЅРµС‚";
+            res += "нет";
         } else {
             res += spouse.getName();
         }
         return res;
     }
     public String getMotherInfo(){
-        String res = "РњР°С‚СЊ: ";
+        String res = "Мать: ";
         Human mother = getMother();
         if (mother != null){
             res += mother.getName();
         } else {
-            res += "РќРµРёР·РІРµСЃС‚РЅР°";
+            res += "Неизвестна";
         }
         return res;
     }
     public String getFatherInfo(){
-        String res = "РћС‚РµС†: ";
+        String res = "Отец: ";
         Human father = getFather();
         if (father != null){
             res += father.getName();
         } else {
-            res += "РќРµРёР·РІРµСЃС‚РµРЅ";
+            res += "Неизвестен";
         }
         return res;
     }
     public String getChildrenInfo(){
         StringBuilder res = new StringBuilder();
-        res.append("Р”РµС‚Рё: ");
+        res.append("Дети: ");
         if (!children.isEmpty()){
             res.append(children.get(0).getName());
             for (int i = 1; i < children.size(); i++) {
@@ -188,7 +195,7 @@ public class Human implements Serializable {
                 res.append(children.get(i).getName());
             }
         } else {
-            res.append("РћС‚СЃСѓС‚СЃС‚РІСѓСЋС‚");
+            res.append("Отсутствуют");
         }
         return res.toString();
     }

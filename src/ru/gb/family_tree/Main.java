@@ -1,6 +1,7 @@
 package ru.gb.family_tree;
 
 import ru.gb.family_tree.service.Service;
+import ru.gb.family_tree.ui.ConsoleUI;
 import ru.gb.family_tree.writer.FileHandler;
 import ru.gb.family_tree.human.Gender;
 import ru.gb.family_tree.human.Human;
@@ -11,24 +12,26 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+        //ConsoleUI consoleUI = new ConsoleUI();
+        //consoleUI.start();
         Service service = new Service();
-        Human aleksey = new Human("РђР»РµРєСЃРµР№", Gender.Male, LocalDate.of(1986, 12, 15));
-        Human alisa = new Human("РђР»РёСЃР°", Gender.Female, LocalDate.of(1990, 5, 23));
+        Human aleksey = new Human("Алексей", Gender.Male, LocalDate.of(1986, 12, 15));
+        Human alisa = new Human("Алиса", Gender.Female, LocalDate.of(1990, 5, 23));
         service.addHuman(aleksey);
         service.addHuman(alisa);
         service.setWedding(aleksey, alisa);
 
-        Human petr = new Human("РџС‘С‚СЂ", Gender.Male, LocalDate.of(2016, 7, 2)
+        Human petr = new Human("Пётр", Gender.Male, LocalDate.of(2016, 7, 2)
                 , aleksey, alisa);
-        Human vasilisa = new Human("Р’Р°СЃРёР»РёСЃР°", Gender.Female, LocalDate.of(2018, 3, 14)
+        Human vasilisa = new Human("Василиса", Gender.Female, LocalDate.of(2018, 3, 14)
                 , aleksey, alisa);
         service.addHuman(petr);
         service.addHuman(vasilisa);
 
-        Human grandMother = new Human("Р›СЋР±РѕРІСЊ", Gender.Female, LocalDate.of(1955, 2, 1));
+        Human grandMother = new Human("Любовь", Gender.Female, LocalDate.of(1955, 2, 1));
         grandMother.addChild(aleksey);
         service.addHuman(grandMother);
-        Human grandFather = new Human("РџР°РІРµР»", Gender.Male, LocalDate.of(1961, 8, 2));
+        Human grandFather = new Human("Павел", Gender.Male, LocalDate.of(1961, 8, 2));
         grandFather.addChild(alisa);
         service.addHuman(grandFather);
 
