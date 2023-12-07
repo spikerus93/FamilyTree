@@ -5,11 +5,11 @@ import study_group.builder.StudentBuilder;
 import study_group.group.StudyGroup;
 
 public class Service {
-    private StudyGroup group;
+    private StudyGroup<Student> group;
     private StudentBuilder builder;
 
     public Service() {
-        group = new StudyGroup();
+        group = new StudyGroup<>();
         builder = new StudentBuilder();
     }
 

@@ -9,29 +9,28 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudyGroup implements Iterable<Student> {
-    private List<Student> studentList;
+public class StudyGroup<E extends StudyGroupItem> implements Iterable<E> {
+    private List<E> studentList;
 
     public StudyGroup() {
         studentList = new ArrayList<>();
     }
 
-    public void addStudent(Student student) {
+    public void addStudent(E student) {
         studentList.add(student);
     }
 
     public void sortByName(){
-        studentList.sort(new StudentComparatorByName());
+        studentList.sort(new StudentComparatorByName<>());
     }
 
     public void sortByAge(){
-        Collections.sort(studentList, new StudentComparatorByAge());
-//        studentList.sort(new StudentComparatorByAge()); ћожно использовать такую запись.
+        studentList.sort(new StudentComparatorByAge<>());
     }
 
     @Override
-    public Iterator<Student> iterator() {
-        return new StudentIterator(studentList);
+    public Iterator<E> iterator() {
+        return new StudentIterator<>(studentList);
         //return studentList.iterator(); можно использовать напр€мую, но не ¬сегда!!!
     }
 }

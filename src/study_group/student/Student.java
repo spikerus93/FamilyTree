@@ -1,6 +1,8 @@
 package study_group.student;
 
-public class Student implements Comparable<Student> {
+import study_group.group.StudyGroupItem;
+
+public class Student implements Comparable<Student>, StudyGroupItem {
     private int id;
     private String name;
     private int age;
