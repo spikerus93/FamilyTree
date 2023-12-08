@@ -1,7 +1,6 @@
-package study_group.student.comparators;
+package study_group.model.student.comparators;
 
-import study_group.group.StudyGroupItem;
-import study_group.student.Student;
+import study_group.model.group.StudyGroupItem;
 
 import java.util.Comparator;
 

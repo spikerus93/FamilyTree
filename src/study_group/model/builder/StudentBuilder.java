@@ -1,6 +1,6 @@
-package study_group.builder;
+package study_group.model.builder;
 
-import study_group.student.Student;
+import study_group.model.student.Student;
 
 public class StudentBuilder {
     private int id;

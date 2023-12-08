@@ -1,6 +1,4 @@
-package study_group.group;
-
-import study_group.student.Student;
+package study_group.model.group;
 
 import java.util.Iterator;
 import java.util.List;

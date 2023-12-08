@@ -1,11 +1,9 @@
-package study_group.group;
+package study_group.model.group;
 
-import study_group.student.comparators.StudentComparatorByAge;
-import study_group.student.comparators.StudentComparatorByName;
-import study_group.student.Student;
+import study_group.model.student.comparators.StudentComparatorByAge;
+import study_group.model.student.comparators.StudentComparatorByName;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 

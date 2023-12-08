@@ -1,8 +1,8 @@
-package study_group.service;
+package study_group.model.service;
 
-import study_group.student.Student;
-import study_group.builder.StudentBuilder;
-import study_group.group.StudyGroup;
+import study_group.model.student.Student;
+import study_group.model.builder.StudentBuilder;
+import study_group.model.group.StudyGroup;
 
 public class Service {
     private StudyGroup<Student> group;
