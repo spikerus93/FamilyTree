@@ -10,7 +10,7 @@ public class AddHuman extends Command{
 
     @Override
     public void execute() {
-        consoleUI.addHuman;
+        consoleUI.addHuman();
 
     }
 }

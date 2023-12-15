@@ -1,9 +1,10 @@
 package ru.gb.family_tree.view;
 
+import ru.gb.family_tree.model.human.Gender;
 import ru.gb.family_tree.presenter.Presenter;
 
+import java.io.IOException;
 import java.util.Scanner;
-
 
 
 public class ConsoleUI implements View{
@@ -21,34 +22,173 @@ public class ConsoleUI implements View{
 
     @Override
     public void start() {
+        hello();
         while (work){
-            String answer = scan();
-      //      presenter.getInfo(answer);
+            setMenu();
+            choice();
         }
+    }
 
+    private void choice() {
+        String value = scanner.nextLine();
+        if (checkMenu(value)) {
+            int num = Integer.parseInt(value);
+            menu.execute(num);
+        }
+    }
+
+    private boolean checkMenu(String text) {
+        try {
+            if (Integer.parseInt(text) > 0 && Integer.parseInt(text) <= menu.getSize()) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Ошибка! Значение отсутствует!");
+        return false;
+    }
+
+    public void finish() {
+        System.out.println("До свидания!");
+        scanner.close();
+        work = false;
+    }
+
+    private void setMenu() {
+        System.out.println("Выберите пункт: ");
+        System.out.println(menu.menu());
+    }
+
+    public void addHuman() {
+        System.out.println("Введите имя: ");
+        String name = scanner.nextLine();
+        System.out.println("Введите пол (Male or Female: ");
+        Gender gender = checkGender();
+    }
+
+    private Gender checkGender() {
+        String answer = null;
+        boolean i = true;
+        while (i) {
+            answer = scanner.nextLine();
+            if (answer.equals("Male") || answer.equals("Female")) {
+                i = false;
+            } else {
+                System.out.println("Неверное значение!" +
+                        " Введите данные повторно");
+            }
+        }
+        return Gender.valueOf(answer);
+    }
+
+    private int checkId() {
+        boolean i = true;
+        long id = 0;
+        while (i) {
+            id = checkIn();
+            if (presenter.checkId((int) id)) {
+                i = false;
+                return (int) id;
+            }
+        }
+        return (int) id;
+    }
+
+    private int checkIn() {
+        int value = 0;
+        boolean i = true;
+        while (i) {
+            String text = scanner.nextLine();
+            if (text.matches("[0-9]+")) {
+                value = Integer.parseInt(text);
+                i = false;
+            } else {
+                System.out.println("Вы ввели неверное значение!");
+            }
+        }
+        return value;
+    }
+
+    public void setBirthDate() {
+        System.out.println("Введите Id: ");
+        int id = checkId();
+        System.out.println("Введите год рождения: ");
+        int year = checkIn();
+        System.out.println("Введите месяц рождения: ");
+        int month = checkIn();
+        System.out.println("Введите день рождения: ");
+        int day = checkIn();
+        if (presenter.setBirthday(id, year, month, day)) {
+            success();
+        } else {
+            System.out.println("Дата указана не верно!");
+            error();
+        }
+    }
+
+    public void addChild() {
+        System.out.println("Введите ID родителя: ");
+        int parentId = checkId();
+        System.out.println("Введите ID ребенка: ");
+        int childId = checkId();
+        if (parentId == childId) {
+            System.out.println("ID одинаковые. Данные не обновлены");
+        } else {
+            presenter.addChild(parentId, childId);
+        }
+    }
+
+    public void addSpouse() {
+        System.out.println("Введите ID 1-ого супруга: ");
+        int one = checkId();
+        System.out.println("Введите ID 2-ого супруга: ");
+        int two = checkId();
+        if (one == two) {
+            System.out.println("ID одинаковые. Данные не обновлены.");
+        } else {
+            presenter.addSpouse(one, two);
+        }
+    }
+
+    public void sortByName() {
+        presenter.sortByName();
+    }
+
+    public  void sortByBirthDate() {
+        presenter.sortByBirthDate();
+    }
+
+    private void error() {
+        System.out.println("Данные не записаны...");
+    }
+
+    private void success() {
+        System.out.println("Данные успешно сохранены!");
+    }
+
+    @Override
+    public void answer(String answer) {
+        System.out.println(answer);
     }
 
     private void hello() {
         System.out.println("Добро пожаловать!");
     }
 
-    private boolean checkValid (String value) {
-        try { if (Integer.parseInt(value) > 0 && Integer.parseInt(value) <= menu.getSize());
+    public void save() {
+        if (presenter.save()) {
+            success();
+        } else {
+            error();
+        }
     }
 
-    private void choice() {
-        String choiceStr = scanner.nextLine();
-        if ()
+    public void load() throws IOException {
+        if (presenter.load()) {
+            success();
+        } else {
+            error();
+        }
     }
-
-    @Override
-    public void answer(String answer) {
-        System.out.println(answer);
-
-    }
-    private String scan() {
-        System.out.println("D");
-        return scanner.nextLine();
-    }
-
 }

@@ -7,6 +7,8 @@ import ru.gb.family_tree.model.human.tree.FamilyTree;
 import ru.gb.family_tree.model.human.writer.Writer;
 
 import java.io.IOException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 
 public class Service {
     private FamilyTree<Human> tree;
@@ -18,6 +20,32 @@ public class Service {
     public Service(){
         tree = new FamilyTree<>();
         humanBuilder = new HumanBuilder();
+    }
+
+    public boolean setBirthday (int id,int year, int month, int day) {
+        Human human = tree.getById(id);
+        if (human != null) {
+            human.setBirthDate(checkDate(year, month, day));
+        }
+        assert human != null;
+        return human.getBirthDate() != null;
+    }
+
+    private LocalDate checkDate(int year, int month, int day) {
+        LocalDate date = null;
+        if (dateIsValid(year, month, day)) {
+            date = LocalDate.of(year, month, day);
+        }
+        return date;
+    }
+
+    private boolean dateIsValid(int year, int month, int day) {
+        try {
+            LocalDate date = LocalDate.of(year, month, day);
+            return true;
+        } catch (DateTimeException e) {
+            return false;
+        }
     }
 
     public Human addToTree (String name, Gender gender) {
@@ -48,7 +76,7 @@ public class Service {
         return writer.write(tree, "saveTree.txt");
     }
 
-    public boolean checkId (long id) {
+    public boolean checkId (int id) {
         Human human = tree.getById(id);
         return human != null;
     }

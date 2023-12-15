@@ -1,4 +1,15 @@
 package ru.gb.family_tree.view.commands;
 
-public class AddChild {
+import ru.gb.family_tree.view.ConsoleUI;
+
+public class AddChild extends Command{
+    public AddChild(ConsoleUI consoleUI) {
+        super(consoleUI);
+        description = "Добавить супруга";
+    }
+
+    @Override
+    public void execute() {
+        consoleUI.addChild();
+    }
 }
