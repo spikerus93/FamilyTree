@@ -1,7 +1,7 @@
 package ru.gb.family_tree.presenter;
 
-import ru.gb.family_tree.service.Service;
-import ru.gb.family_tree.ui.View;
+import ru.gb.family_tree.model.human.service.Service;
+import ru.gb.family_tree.view.View;
 
 public class Presenter {
     private View view;

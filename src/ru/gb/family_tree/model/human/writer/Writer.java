@@ -1,4 +1,4 @@
-package ru.gb.family_tree.writer;
+package ru.gb.family_tree.model.human.writer;
 
 import java.io.Serializable;
 

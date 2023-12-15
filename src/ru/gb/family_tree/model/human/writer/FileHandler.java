@@ -1,6 +1,6 @@
-package ru.gb.family_tree.writer;
+package ru.gb.family_tree.model.human.writer;
 
-import ru.gb.family_tree.tree.FamilyTree;
+import ru.gb.family_tree.model.human.tree.FamilyTree;
 
 import java.io.*;
 

@@ -1,8 +1,8 @@
-package ru.gb.family_tree.tree;
+package ru.gb.family_tree.model.human.tree;
 
-import ru.gb.family_tree.human.Human;
-import ru.gb.family_tree.tree.comparators.HumanComparatorByBirthDate;
-import ru.gb.family_tree.tree.comparators.HumanComparatorByName;
+import ru.gb.family_tree.model.human.Human;
+import ru.gb.family_tree.model.human.tree.comparators.HumanComparatorByBirthDate;
+import ru.gb.family_tree.model.human.tree.comparators.HumanComparatorByName;
 
 
 import java.io.Serializable;
