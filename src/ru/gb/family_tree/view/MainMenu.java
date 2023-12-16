@@ -1,8 +1,6 @@
 package ru.gb.family_tree.view;
 
-import ru.gb.family_tree.view.commands.AddChild;
-import ru.gb.family_tree.view.commands.AddHuman;
-import ru.gb.family_tree.view.commands.Command;
+import ru.gb.family_tree.view.commands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,8 @@ public class MainMenu {
         commandList = new ArrayList<>();
         commandList.add(new AddHuman(consoleUI));
         commandList.add(new AddChild(consoleUI));
+        commandList.add(new AddSpouse(consoleUI));
+        commandList.add(new AddToParents(consoleUI));
 
 
 

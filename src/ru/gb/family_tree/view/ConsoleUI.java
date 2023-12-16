@@ -4,6 +4,7 @@ import ru.gb.family_tree.model.human.Gender;
 import ru.gb.family_tree.presenter.Presenter;
 
 import java.io.IOException;
+import java.util.EmptyStackException;
 import java.util.Scanner;
 
 
@@ -65,6 +66,11 @@ public class ConsoleUI implements View{
         String name = scanner.nextLine();
         System.out.println("Введите пол (Male or Female: ");
         Gender gender = checkGender();
+        try {
+            presenter.addPerson(name, gender);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private Gender checkGender() {
@@ -148,6 +154,18 @@ public class ConsoleUI implements View{
             System.out.println("ID одинаковые. Данные не обновлены.");
         } else {
             presenter.addSpouse(one, two);
+        }
+    }
+
+    public void addToParents() {
+        System.out.println("Введите ID первого родителя: ");
+        int parent1 = checkId();
+        System.out.println("Введите ID второго родителя: ");
+        int parent2 = checkId();
+        if (parent1 == parent2) {
+            System.out.println("ID одинаковые. Введите другой ID: ");
+        } else {
+            presenter.addToParents(parent1, parent2);
         }
     }
 

@@ -9,6 +9,6 @@ public class AddToChildren extends Command{
 
     @Override
     public void execute() {
-        consoleUI.
+       // consoleUI.
     }
 }

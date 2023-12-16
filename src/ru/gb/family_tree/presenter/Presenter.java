@@ -30,6 +30,10 @@ public class Presenter {
         checkId(one);
     }
 
+    public void addToParents (int parent1, int parent2) {
+        service.addToParents(parent1, parent2);
+    }
+
     public boolean checkId (int id) {
         return  service.checkId(id);
     }

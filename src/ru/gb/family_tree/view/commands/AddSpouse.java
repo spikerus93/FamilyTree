@@ -5,6 +5,7 @@ import ru.gb.family_tree.view.ConsoleUI;
 public class AddSpouse extends Command{
     public AddSpouse(ConsoleUI consoleUI){
         super(consoleUI);
+        description = "Добавить супруга";
     }
     @Override
     public void execute() {

@@ -68,6 +68,17 @@ public class Service {
         child.addParent(parent);
     }
 
+    public void addToParents (int parent1, int parent2) {
+        Human parentId1 = tree.getById(parent1);
+        Human parentId2 = tree.getById(parent2);
+        parentId1.getParents();
+        parentId2.getParents();
+    }
+
+    public void addToChildren (int id) {
+        
+    }
+
     public void load() throws IOException {
         tree = (FamilyTree) writer.restore("loadTree.txt");
     }
