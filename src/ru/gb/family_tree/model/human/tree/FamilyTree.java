@@ -119,10 +119,10 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
         humanList.sort(new HumanComparatorByBirthDate());
     }
 
-    @Override
-    public String toString(){
-        return getInfo();
-    }
+//    @Override
+//    public String toString(){
+//        return getInfo();
+//    }
 
     public String getInfo(){
         StringBuilder sb = new StringBuilder();
@@ -135,6 +135,7 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
         }
         return sb.toString();
     }
+
 
     @Override
     public Iterator<E> iterator() {

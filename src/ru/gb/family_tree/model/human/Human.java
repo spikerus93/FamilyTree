@@ -132,9 +132,9 @@ public class Human implements TreeNode<Human> {
 
     @Override
     public String toString() {
-        return getInfo();
+        return getInfoTree();
     }
-    public String getInfo(){
+    public String getInfoTree(){
         StringBuilder sb = new StringBuilder();
         sb.append("id: ");
         sb.append(id);

@@ -4,7 +4,6 @@ import ru.gb.family_tree.model.human.Gender;
 import ru.gb.family_tree.presenter.Presenter;
 
 import java.io.IOException;
-import java.util.EmptyStackException;
 import java.util.Scanner;
 
 
@@ -88,6 +87,12 @@ public class ConsoleUI implements View{
         return Gender.valueOf(answer);
     }
 
+    public void getById() {
+        System.out.println("¬ведите ID: ");
+        int id = checkId();
+        presenter.checkId(id);
+    }
+
     private int checkId() {
         boolean i = true;
         long id = 0;
@@ -167,6 +172,10 @@ public class ConsoleUI implements View{
         } else {
             presenter.addToParents(parent1, parent2);
         }
+    }
+
+    public void TreeGetInfo() {
+      //presenter.
     }
 
     public void sortByName() {
