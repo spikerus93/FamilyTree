@@ -28,20 +28,20 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
             humanList.add(human);
             human.setId(memberId++);
 
-            addToParents(human);
-            addToChildren(human);
+            addToParents((Human) human);
+            addToChildren((Human) human);
 
             return true;
         }
         return false;
     }
-    private void addToParents(E human){
-        for (E parent: human.getParents()){
+    private void addToParents(Human human){
+        for (Human parent: human.getParents()){
             parent.addChild(human);
         }
     }
-    private void addToChildren(E human){
-        for (E child: human.getChildren()){
+    private void addToChildren(Human human){
+        for (Human child: human.getChildren()){
             child.addParent(human);
         }
     }
@@ -119,10 +119,10 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
         humanList.sort(new HumanComparatorByBirthDate());
     }
 
-//    @Override
-//    public String toString(){
-//        return getInfo();
-//    }
+    @Override
+    public String toString(){
+        return getInfo();
+    }
 
     public String getInfo(){
         StringBuilder sb = new StringBuilder();

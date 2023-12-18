@@ -76,6 +76,8 @@ public class Service {
     }
 
     public void addToChildren (int id) {
+
+
         
     }
 
@@ -87,11 +89,14 @@ public class Service {
         return writer.write(tree, "saveTree.txt");
     }
 
+    public void setWriter (Writer writer) {
+        this.writer = writer;
+    }
+
     public boolean checkId (int id) {
         Human human = tree.getById(id);
         return human != null;
     }
-
 
     public void sortByName() {
         tree.sortByName();
@@ -99,11 +104,6 @@ public class Service {
 
     public void sortByBirthDate() {
         tree.sortByBirthDate();
-    }
-
-    @Override
-    public String toString() {
-        return getInfo();
     }
 
     public String getInfo() {

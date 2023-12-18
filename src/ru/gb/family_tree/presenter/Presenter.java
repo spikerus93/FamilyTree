@@ -2,13 +2,14 @@ package ru.gb.family_tree.presenter;
 
 import ru.gb.family_tree.model.human.Gender;
 import ru.gb.family_tree.model.human.service.Service;
+import ru.gb.family_tree.model.human.writer.Writer;
 import ru.gb.family_tree.view.View;
 
 import java.io.IOException;
 
 public class Presenter {
-    private View view;
-    private Service service;
+    private final View view;
+    private final Service service;
 
     public Presenter(View view) {
         this.view = view;
@@ -60,8 +61,10 @@ public class Presenter {
     public boolean save() {
         return service.save();
     }
-    public boolean load() throws IOException {
+    public void load() throws IOException {
         service.load();
-        return false;
+    }
+    public void setWriter (Writer writer) {
+        service.setWriter(writer);
     }
 }

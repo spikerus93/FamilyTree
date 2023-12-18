@@ -8,13 +8,14 @@ import ru.gb.family_tree.model.human.tree.FamilyTree;
 import ru.gb.family_tree.view.ConsoleUI;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ConsoleUI test = new ConsoleUI();
+        test.setWriter(new FileHandler());
         test.start();
-        test.save();
 
 //        Service service = new Service();
 //        Human aleksey = new Human("Алексей", Gender.Male, LocalDate.of(1986, 12, 15));

@@ -4,7 +4,7 @@ import ru.gb.family_tree.model.human.tree.FamilyTree;
 
 import java.io.*;
 
-public class FileHandler implements Writer{
+public class FileHandler implements Writer {
     private String filePath;
 
     @Override
@@ -23,6 +23,9 @@ public class FileHandler implements Writer{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         }
         return flag;
     }

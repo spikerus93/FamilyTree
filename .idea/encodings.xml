@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/src/ru/gb/family_tree/Main.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/ru/gb/family_tree/model/human/Human.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/ru/gb/family_tree/model/human/tree/FamilyTree.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/gb/family_tree/view/ConsoleUI.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/gb/family_tree/view/commands/TreeGetInfo.java" charset="windows-1251" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

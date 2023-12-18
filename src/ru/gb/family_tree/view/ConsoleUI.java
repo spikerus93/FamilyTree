@@ -1,6 +1,8 @@
 package ru.gb.family_tree.view;
 
 import ru.gb.family_tree.model.human.Gender;
+import ru.gb.family_tree.model.human.writer.FileHandler;
+import ru.gb.family_tree.model.human.writer.Writer;
 import ru.gb.family_tree.presenter.Presenter;
 
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class ConsoleUI implements View{
     }
 
     @Override
-    public void start() {
+    public void start() throws IOException {
         hello();
         while (work){
             setMenu();
@@ -29,7 +31,7 @@ public class ConsoleUI implements View{
         }
     }
 
-    private void choice() {
+    private void choice() throws IOException {
         String value = scanner.nextLine();
         if (checkMenu(value)) {
             int num = Integer.parseInt(value);
@@ -211,11 +213,15 @@ public class ConsoleUI implements View{
         }
     }
 
-    public void load() throws IOException {
-        if (presenter.load()) {
-            success();
-        } else {
-            error();
+    public void load() {
+        try {
+            presenter.load();
+        } catch (RuntimeException | IOException e) {
+            System.out.println(e.getMessage());
         }
+    }
+
+    public void setWriter(Writer writer) {
+        presenter.setWriter(writer);
     }
 }
