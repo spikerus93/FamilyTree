@@ -1,13 +1,14 @@
 package ru.gb.family_tree.model.human;
 
 import ru.gb.family_tree.model.human.tree.TreeNode;
+import ru.gb.family_tree.model.tree.TreeNode;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements TreeNode<Human> {
+public class Human implements TreeNode<Human>, TreeNode<Human> {
     private long id;
     private String name;
     private Gender gender;

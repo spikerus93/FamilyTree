@@ -1,8 +1,7 @@
 package ru.gb.family_tree.view;
 
 import ru.gb.family_tree.model.human.Gender;
-import ru.gb.family_tree.model.human.writer.FileHandler;
-import ru.gb.family_tree.model.human.writer.Writer;
+import ru.gb.family_tree.model.writer.FileHandler;
 import ru.gb.family_tree.presenter.Presenter;
 
 import java.io.IOException;
@@ -214,14 +213,10 @@ public class ConsoleUI implements View{
     }
 
     public void load() {
-        try {
-            presenter.load();
-        } catch (RuntimeException | IOException e) {
-            System.out.println(e.getMessage());
-        }
+        presenter.load();
     }
 
-    public void setWriter(Writer writer) {
+    public void setWriter(FileHandler writer) {
         presenter.setWriter(writer);
     }
 }

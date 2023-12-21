@@ -1,6 +1,6 @@
-package ru.gb.family_tree.model.human.tree.comparators;
+package ru.gb.family_tree.model.tree.comparators;
 
-import ru.gb.family_tree.model.human.tree.TreeNode;
+import ru.gb.family_tree.model.tree.TreeNode;
 
 import java.util.Comparator;
 

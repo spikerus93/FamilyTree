@@ -1,4 +1,4 @@
-package ru.gb.family_tree.model.human.tree;
+package ru.gb.family_tree.model.tree;
 
 import java.io.Serializable;
 import java.time.LocalDate;

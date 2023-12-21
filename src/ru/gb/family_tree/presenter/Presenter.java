@@ -1,8 +1,8 @@
 package ru.gb.family_tree.presenter;
 
 import ru.gb.family_tree.model.human.Gender;
-import ru.gb.family_tree.model.human.service.Service;
-import ru.gb.family_tree.model.human.writer.Writer;
+import ru.gb.family_tree.model.service.Service;
+import ru.gb.family_tree.model.writer.Writer;
 import ru.gb.family_tree.view.View;
 
 import java.io.IOException;
@@ -61,8 +61,7 @@ public class Presenter {
     public boolean save() {
         return service.save();
     }
-    public void load() throws IOException {
-        service.load();
+    public void load() { service.load();
     }
     public void setWriter (Writer writer) {
         service.setWriter(writer);

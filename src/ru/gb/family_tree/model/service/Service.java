@@ -1,12 +1,11 @@
-package ru.gb.family_tree.model.human.service;
+package ru.gb.family_tree.model.service;
 
 import ru.gb.family_tree.model.human.Gender;
 import ru.gb.family_tree.model.human.Human;
-import ru.gb.family_tree.model.human.humanbuilder.HumanBuilder;
-import ru.gb.family_tree.model.human.tree.FamilyTree;
-import ru.gb.family_tree.model.human.writer.Writer;
+import ru.gb.family_tree.model.humanbuilder.HumanBuilder;
+import ru.gb.family_tree.model.tree.FamilyTree;
+import ru.gb.family_tree.model.writer.Writer;
 
-import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
@@ -81,7 +80,7 @@ public class Service {
         
     }
 
-    public void load() throws IOException {
+    public void load() {
         tree = (FamilyTree) writer.restore("loadTree.txt");
     }
 
