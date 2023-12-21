@@ -1,8 +1,8 @@
 package ru.gb.family_tree.model.tree;
 
 import ru.gb.family_tree.model.human.Human;
-import ru.gb.family_tree.model.human.tree.comparators.HumanComparatorByBirthDate;
-import ru.gb.family_tree.model.human.tree.comparators.HumanComparatorByName;
+import ru.gb.family_tree.model.tree.comparators.HumanComparatorByBirthDate;
+import ru.gb.family_tree.model.tree.comparators.HumanComparatorByName;
 
 
 import java.io.Serializable;
@@ -13,7 +13,7 @@ import java.util.List;
 public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable<E> {
 
     private long memberId;
-    private List<E> humanList;
+    private final List<E> humanList;
     public FamilyTree(){
         this(new ArrayList<>());
     }
@@ -139,6 +139,6 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
 
     @Override
     public Iterator<E> iterator() {
-        return new HumanIterator(humanList);
+        return new HumanIterator<E>(humanList);
     }
 }

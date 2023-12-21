@@ -5,7 +5,7 @@ import ru.gb.family_tree.model.service.Service;
 import ru.gb.family_tree.model.writer.Writer;
 import ru.gb.family_tree.view.View;
 
-import java.io.IOException;
+import java.time.LocalDate;
 
 public class Presenter {
     private final View view;
@@ -17,8 +17,8 @@ public class Presenter {
     }
 
 
-    public void addPerson (String name, Gender gender) {
-        view.answer(service.addToTree(name, gender).toString());
+    public void addPerson (String name, Gender gender, LocalDate birthDate) {
+        view.answer(service.addToTree(name, gender, birthDate).toString());
     }
 
     public void addChild(int parentId, int childId) {
@@ -38,15 +38,15 @@ public class Presenter {
     public boolean checkId (int id) {
         return  service.checkId(id);
     }
-    public boolean setBirthday (int id, int year, int month, int day) {
-        if (service.setBirthday(id, year, month, day)) {
+    public boolean setBirthday (int year, int month, int day) {
+        if (service.setBirthday(year, month, day)) {
             getTree();
             return true;
         }
         return false;
     }
 
-    private void getTree() {
+    public void getTree() {
         view.answer(service.getInfo());
     }
 
@@ -56,6 +56,7 @@ public class Presenter {
     }
     public void sortByBirthDate() {
         service.sortByBirthDate();
+        getTree();
     }
 
     public boolean save() {

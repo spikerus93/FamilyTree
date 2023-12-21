@@ -12,6 +12,6 @@ public class SortByBirthDate extends Command{
 
     @Override
     public void execute() throws IOException {
-        consoleUI.setBirthDate();
+        consoleUI.sortByBirthDate();
     }
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Service {
     private FamilyTree<Human> tree;
 
-    private HumanBuilder humanBuilder;
+    private final HumanBuilder humanBuilder;
 
     private Writer writer;
 
@@ -21,12 +21,9 @@ public class Service {
         humanBuilder = new HumanBuilder();
     }
 
-    public boolean setBirthday (int id,int year, int month, int day) {
-        Human human = tree.getById(id);
-        if (human != null) {
-            human.setBirthDate(checkDate(year, month, day));
-        }
-        assert human != null;
+    public boolean setBirthday (int year, int month, int day) {
+        Human human = new Human();
+        human.setBirthDate(checkDate(year, month, day));
         return human.getBirthDate() != null;
     }
 
@@ -47,8 +44,8 @@ public class Service {
         }
     }
 
-    public Human addToTree (String name, Gender gender) {
-        Human human = humanBuilder.build(name, gender);
+    public Human addToTree (String name, Gender gender, LocalDate birthDate) {
+        Human human = humanBuilder.build(name, gender, birthDate);
         tree.add(human);
         return human;
     }
@@ -58,6 +55,7 @@ public class Service {
         Human human2 = tree.getById(two);
         human1.setSpouse(human2);
         human2.setSpouse(human1);
+        tree.getInfo();
     }
 
     public void addChild (int parentId, int childId) {
@@ -80,8 +78,8 @@ public class Service {
         
     }
 
-    public void load() {
-        tree = (FamilyTree) writer.restore("loadTree.txt");
+    public FamilyTree<Human> load() {
+        return tree = (FamilyTree<Human>) writer.restore("saveTree.txt");
     }
 
     public boolean save() {
@@ -99,21 +97,20 @@ public class Service {
 
     public void sortByName() {
         tree.sortByName();
+        getInfo();
     }
 
     public void sortByBirthDate() {
         tree.sortByBirthDate();
+        getInfo();
     }
 
     public String getInfo() {
         return tree.getInfo();
     }
 
-    public boolean addHuman(Human human) {
-        return tree.add(human);
-    }
-
-    public boolean setWedding(Human human1 , Human human2 ) {
-        return tree.setWedding(human1, human2);
+    @Override
+    public String toString() {
+        return getInfo();
     }
 }

@@ -5,14 +5,15 @@ import ru.gb.family_tree.model.writer.FileHandler;
 import ru.gb.family_tree.presenter.Presenter;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
 public class ConsoleUI implements View{
-    private Presenter presenter;
-    private Scanner scanner;
+    private final Presenter presenter;
+    private final Scanner scanner;
     private  boolean work;
-    private MainMenu menu;
+    private final MainMenu menu;
 
     public ConsoleUI(){
         this.scanner = new Scanner(System.in);
@@ -66,8 +67,10 @@ public class ConsoleUI implements View{
         String name = scanner.nextLine();
         System.out.println("Введите пол (Male or Female: ");
         Gender gender = checkGender();
+        System.out.println("Введите дату рождения: ");
+        LocalDate birthDate = setBirthDate();
         try {
-            presenter.addPerson(name, gender);
+            presenter.addPerson(name, gender, birthDate);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
@@ -122,21 +125,20 @@ public class ConsoleUI implements View{
         return value;
     }
 
-    public void setBirthDate() {
-        System.out.println("Введите Id: ");
-        int id = checkId();
+    public LocalDate setBirthDate() {
         System.out.println("Введите год рождения: ");
         int year = checkIn();
         System.out.println("Введите месяц рождения: ");
         int month = checkIn();
         System.out.println("Введите день рождения: ");
         int day = checkIn();
-        if (presenter.setBirthday(id, year, month, day)) {
-            success();
-        } else {
+        if (!presenter.setBirthday(year, month, day)) {
             System.out.println("Дата указана не верно!");
             error();
+        } else {
+            success();
         }
+        return LocalDate.of(year, month, day);
     }
 
     public void addChild() {
@@ -176,7 +178,7 @@ public class ConsoleUI implements View{
     }
 
     public void TreeGetInfo() {
-      //presenter.
+     presenter.getTree();
     }
 
     public void sortByName() {
@@ -193,6 +195,9 @@ public class ConsoleUI implements View{
 
     private void success() {
         System.out.println("Данные успешно сохранены!");
+    }
+    private void download() {
+        System.out.println("Данные успешно загружены.");
     }
 
     @Override
@@ -214,8 +219,8 @@ public class ConsoleUI implements View{
 
     public void load() {
         presenter.load();
+        download();
     }
-
     public void setWriter(FileHandler writer) {
         presenter.setWriter(writer);
     }

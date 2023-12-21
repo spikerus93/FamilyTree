@@ -17,6 +17,9 @@ public class MainMenu {
         commandList.add(new AddToParents(consoleUI));
         commandList.add(new GetByIDHuman(consoleUI));
         commandList.add(new SearchByName(consoleUI));
+        commandList.add(new SortByBirthDate(consoleUI));
+        commandList.add(new SortByName(consoleUI));
+        commandList.add(new TreeGetInfo(consoleUI));
         commandList.add(new SaveTree(consoleUI));
         commandList.add(new LoadTree(consoleUI));
         commandList.add(new Finish(consoleUI));

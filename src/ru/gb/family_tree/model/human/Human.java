@@ -1,6 +1,5 @@
 package ru.gb.family_tree.model.human;
 
-import ru.gb.family_tree.model.human.tree.TreeNode;
 import ru.gb.family_tree.model.tree.TreeNode;
 
 import java.time.LocalDate;
@@ -8,7 +7,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements TreeNode<Human>, TreeNode<Human> {
+public class Human implements TreeNode<Human> {
     private long id;
     private String name;
     private Gender gender;
@@ -39,21 +38,18 @@ public class Human implements TreeNode<Human>, TreeNode<Human> {
     }
 
     public Human(){};
-    public boolean addChild (Human child) {
+    public void addChild (Human child) {
         if (!children.contains((child))) {
             children.add(child);
-            return true;
         }
-        return false;
     }
 
-    public boolean addParent(Human parent){
+    public void addParent(Human parent){
         if (parent.getGender().equals(Gender.Male)){
             setFather(parent);
         } else if (parent.getGender().equals(Gender.Female)){
             setMother(parent);
         }
-        return true;
     }
     public void setGender(Gender gender) {
         this.gender = gender;
@@ -205,10 +201,9 @@ public class Human implements TreeNode<Human>, TreeNode<Human> {
         if (this == object){
             return true;
         }
-        if (!(object instanceof Human)){
+        if (!(object instanceof Human human)){
             return false;
         }
-        Human human = (Human) object;
         return human.getId() == getId();
     }
 }
