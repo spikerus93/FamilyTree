@@ -12,6 +12,6 @@ public class GetByIDHuman extends Command{
 
     @Override
     public void execute() throws IOException {
-        consoleUI.getById();
+        consoleUI.getInfoById();
     }
 }

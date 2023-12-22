@@ -78,8 +78,8 @@ public class Service {
         
     }
 
-    public FamilyTree<Human> load() {
-        return tree = (FamilyTree<Human>) writer.restore("saveTree.txt");
+    public void load() {
+        tree = (FamilyTree<Human>) writer.restore("saveTree.txt");
     }
 
     public boolean save() {
@@ -107,6 +107,10 @@ public class Service {
 
     public String getInfo() {
         return tree.getInfo();
+    }
+
+    public String getInfoById (int memberId) {
+        return tree.getInfoById(memberId);
     }
 
     @Override

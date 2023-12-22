@@ -201,9 +201,11 @@ public class Human implements TreeNode<Human> {
         if (this == object){
             return true;
         }
-        if (!(object instanceof Human human)){
+        if (!(object instanceof Human)){
+
             return false;
         }
+        Human human = (Human) object;
         return human.getId() == getId();
     }
 }

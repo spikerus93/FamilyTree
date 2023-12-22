@@ -181,6 +181,12 @@ public class ConsoleUI implements View{
      presenter.getTree();
     }
 
+    public void getInfoById() {
+        System.out.println("¬ведите ID: ");
+        int memberId = checkId();
+        presenter.getInfoById(memberId);
+    }
+
     public void sortByName() {
         presenter.sortByName();
     }
@@ -217,10 +223,17 @@ public class ConsoleUI implements View{
         }
     }
 
-    public void load() {
+//    public void load() {
+//        presenter.load();
+//        download();
+//    }
+public void load() {
+    try {
         presenter.load();
-        download();
+    } catch (RuntimeException e) {
+        System.out.println(e.getMessage());
     }
+}
     public void setWriter(FileHandler writer) {
         presenter.setWriter(writer);
     }

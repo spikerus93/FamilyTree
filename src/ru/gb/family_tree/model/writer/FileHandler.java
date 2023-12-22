@@ -5,6 +5,8 @@ import ru.gb.family_tree.model.tree.FamilyTree;
 import java.io.*;
 
 public class FileHandler implements Writer {
+
+    static final long serialVersionUID = 1L;
     private String filePath;
 
     @Override

@@ -136,6 +136,31 @@ public class FamilyTree<E extends TreeNode<E>> implements Serializable, Iterable
         return sb.toString();
     }
 
+    public String getInfoById (int memberId) {
+        StringBuilder sb = new StringBuilder("Id - ");
+        sb.append(memberId).append("\n").append("\n");
+        E human = getById(memberId);
+        if (human != null) {
+            sb.append("Имя: ").append(human.getName() + "\n");
+            sb.append("Пол: ").append(human.getGender() + "\n");
+            if (human.getBirthDate() != null) {
+                sb.append("Дата рождения: ").append(human.getBirthDate() + "\n");
+                sb.append("Возраст: ").append(human.getAge() + "\n");
+            }
+            if (human.getSpouse() != null) {
+                sb.append(human.getSpouse() + "\n");
+            }
+            if (human.getParents() != null) {
+                sb.append(human.getParents() + "\n");
+            }
+            if (human.getChildren() != null) {
+                sb.append(human.getChildren() + "\n");
+            }
+            return sb.toString();
+        }
+        return "Данных нет.";
+    }
+
 
     @Override
     public Iterator<E> iterator() {
