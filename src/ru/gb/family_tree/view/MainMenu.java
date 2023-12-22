@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenu {
-    private List<Command> commandList;
+    private final List<Command> commandList;
 
     public MainMenu (ConsoleUI consoleUI) {
         commandList = new ArrayList<>();
@@ -16,7 +16,6 @@ public class MainMenu {
         commandList.add(new AddSpouse(consoleUI));
         commandList.add(new AddToParents(consoleUI));
         commandList.add(new GetByIDHuman(consoleUI));
-        commandList.add(new SearchByName(consoleUI));
         commandList.add(new SortByBirthDate(consoleUI));
         commandList.add(new SortByName(consoleUI));
         commandList.add(new TreeGetInfo(consoleUI));

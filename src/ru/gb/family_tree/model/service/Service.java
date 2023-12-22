@@ -63,6 +63,7 @@ public class Service {
         Human child = tree.getById(childId);
         parent.addChild(child);
         child.addParent(parent);
+        tree.getInfo();
     }
 
     public void addToParents (int parent1, int parent2) {
@@ -70,12 +71,6 @@ public class Service {
         Human parentId2 = tree.getById(parent2);
         parentId1.getParents();
         parentId2.getParents();
-    }
-
-    public void addToChildren (int id) {
-
-
-        
     }
 
     public void load() {

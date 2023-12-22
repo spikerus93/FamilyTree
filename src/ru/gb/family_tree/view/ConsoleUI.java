@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 
-public class ConsoleUI implements View{
+public class ConsoleUI implements View {
     private final Presenter presenter;
     private final Scanner scanner;
-    private  boolean work;
+    private boolean work;
     private final MainMenu menu;
 
-    public ConsoleUI(){
+    public ConsoleUI() {
         this.scanner = new Scanner(System.in);
         presenter = new Presenter(this);
         work = true;
@@ -25,7 +25,7 @@ public class ConsoleUI implements View{
     @Override
     public void start() throws IOException {
         hello();
-        while (work){
+        while (work) {
             setMenu();
             choice();
         }
@@ -178,7 +178,7 @@ public class ConsoleUI implements View{
     }
 
     public void TreeGetInfo() {
-     presenter.getTree();
+        presenter.getTree();
     }
 
     public void getInfoById() {
@@ -191,7 +191,7 @@ public class ConsoleUI implements View{
         presenter.sortByName();
     }
 
-    public  void sortByBirthDate() {
+    public void sortByBirthDate() {
         presenter.sortByBirthDate();
     }
 
@@ -202,6 +202,7 @@ public class ConsoleUI implements View{
     private void success() {
         System.out.println("Данные успешно сохранены!");
     }
+
     private void download() {
         System.out.println("Данные успешно загружены.");
     }
@@ -223,17 +224,15 @@ public class ConsoleUI implements View{
         }
     }
 
-//    public void load() {
-//        presenter.load();
-//        download();
-//    }
-public void load() {
-    try {
-        presenter.load();
-    } catch (RuntimeException e) {
-        System.out.println(e.getMessage());
+    public void load() {
+        try {
+            presenter.load();
+            download();
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
-}
+
     public void setWriter(FileHandler writer) {
         presenter.setWriter(writer);
     }

@@ -54,6 +54,7 @@ public class Presenter {
         view.answer(service.getInfoById(memberId));
     }
 
+
     public void sortByName() {
         service.sortByName();
         getTree();
